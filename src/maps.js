@@ -1990,4 +1990,17 @@ const maps = [
         }
       },
     },
+  
+    { // https://worldview.earthdata.nasa.gov/?v=13.512286596085488,43.61632121275176,24.76228659608548,49.96092570493926
+      name: "NASA Worldview",
+      category: SPECIAL_CATEGORY,
+      default_check: false,
+      domain: "worldview.earthdata.nasa.gov",
+      description: "Over 900 global, full-resolution satellite imagery layers",
+      getUrl(lat, lon, zoom) {
+        [minlon, minlat, maxlon, maxlat] = latLonZoomToBbox(lat, lon, zoom);
+        return `https://worldview.earthdata.nasa.gov/?v=${minlat},${minlon},${maxlat},${maxlon}`;
+
+      }
+    },
 ];
